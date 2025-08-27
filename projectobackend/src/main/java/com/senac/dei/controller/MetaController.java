@@ -23,7 +23,7 @@ public class MetaController {
         this.metaService = metaService;
     }
     @GetMapping("/listar")
-    public ResponseEntity<List<Meta>> listarMetass(){
+    public ResponseEntity<List<Meta>> listarMetas(){
         return ResponseEntity.ok(metaService.listarMetas());
     }
 

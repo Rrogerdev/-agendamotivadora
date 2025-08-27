@@ -1,8 +1,10 @@
 package com.senac.dei.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 public class Missao {
 
@@ -11,8 +13,7 @@ public class Missao {
     @Column(name="missao_id")
     private int missao_id;
 
-    @Column(name = "meta_id")
-    private int meta_id;
+
 
     @Column(name = "missao_titulo")
     private String missao_titulo;
@@ -22,6 +23,17 @@ public class Missao {
     @Temporal(TemporalType.DATE)
     @Column(name = "missao_prazo")
     private LocalDateTime missao_prazo;
+
+
+    @OneToMany(mappedBy = "tarefa")
+    private Set<Tarefa> tarefas;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "meta_id", nullable = false)
+    private int meta_id;
+
+
 
 
     public LocalDateTime getMissao_inicio() {

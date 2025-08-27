@@ -1,6 +1,7 @@
 package com.senac.dei.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -34,6 +35,11 @@ public class Tarefa {
 
     @Column(name="tarefa_status")
     private int tarefa_status;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name="missao_id", nullable = false)
+    private Missao missao;
 
     public int getTarefa_id() {
         return tarefa_id;
