@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@Entity
+@Table(name = "missao")
 public class Missao {
 
     @Id
@@ -20,21 +22,67 @@ public class Missao {
 
 
 
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     @Column(name = "missao_prazo")
     private LocalDateTime missao_prazo;
 
 
-    @OneToMany(mappedBy = "tarefa")
+    @OneToMany(mappedBy = "tarefa_id")
     private Set<Tarefa> tarefas;
 
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "meta_id", nullable = false)
-    private int meta_id;
+        private Meta meta;
 
 
+    public int getMissao_id() {
+        return missao_id;
+    }
 
+    public void setMissao_id(int missao_id) {
+        this.missao_id = missao_id;
+    }
+
+    public String getMissao_titulo() {
+        return missao_titulo;
+    }
+
+    public void setMissao_titulo(String missao_titulo) {
+        this.missao_titulo = missao_titulo;
+    }
+
+    public LocalDateTime getMissao_prazo() {
+        return missao_prazo;
+    }
+
+    public void setMissao_prazo(LocalDateTime missao_prazo) {
+        this.missao_prazo = missao_prazo;
+    }
+
+    public Set<Tarefa> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(Set<Tarefa> tarefas) {
+        this.tarefas = tarefas;
+    }
+
+    public Meta getMeta() {
+        return meta;
+    }
+
+    public void setMeta(Meta meta) {
+        this.meta = meta;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public LocalDateTime getMissao_inicio() {
         return missao_inicio;
@@ -44,10 +92,10 @@ public class Missao {
         this.missao_inicio = missao_inicio;
     }
 
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     @Column(name = "missao_inicio")
     private LocalDateTime missao_inicio;
 
     @Column(name="missao_status")
-    private int missao_status;
+    private int status;
 }

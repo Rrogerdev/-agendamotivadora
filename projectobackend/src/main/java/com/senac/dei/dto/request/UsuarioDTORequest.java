@@ -1,33 +1,41 @@
-package com.senac.dei.entity;
+package com.senac.dei.dto.request;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.senac.dei.entity.Meta;
+import com.senac.dei.entity.Notificacao;
+import com.senac.dei.entity.Usuario;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 import java.util.Set;
-@Entity
-@Table(name = "usuario")
-public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="usuario_id")
+
+public class UsuarioDTORequest {
+
+
+
+
+
+
     private int usuario_id;
 
 
-    @Column(name = "usuario_nome")
     private String usuario_nome;
 
 
-
-
-    @Column(name = "usuario_email", nullable = false)
     private String usuario_email;
 
 
-    @Column(name = "usuario_senha")
+
     private String usuario_senha;
 
 
-    @Column(name = "usuario_status")
     private int status;
+
+
+
+    private int usuario_status;
 
     public int getUsuario_id() {
         return usuario_id;
@@ -69,26 +77,15 @@ public class Usuario {
         this.status = status;
     }
 
-    public Set<Meta> getMetas() {
-        return metas;
+
+    public int getUsuario_status() {
+        return usuario_status;
     }
 
-    public void setMetas(Set<Meta> metas) {
-        this.metas = metas;
+    public void setUsuario_status(int usuario_status) {
+        this.usuario_status = usuario_status;
     }
-
-    public Set<Notificacao> getNotificacoes() {
-        return notificacoes;
-    }
-
-    public void setNotificacoes(Set<Notificacao> notificacoes) {
-        this.notificacoes = notificacoes;
-    }
-
-    @OneToMany(mappedBy = "meta_id")
-    private Set <Meta> metas;
-
-    @OneToMany(mappedBy = "notificacao_id")
-    private Set <Notificacao> notificacoes;
-
+//    private Set <Meta> metas;
+//
+//    private Set <Notificacao> notificacoes;
 }

@@ -1,16 +1,21 @@
 package com.senac.dei.controller;
+import com.senac.dei.dto.request.TarefaDTORequest;
+import com.senac.dei.dto.request.UsuarioDTORequest;
+import com.senac.dei.dto.response.TarefaDTOResponse;
+import com.senac.dei.dto.response.UsuarioDTOResponse;
 import com.senac.dei.entity.Usuario;
 import com.senac.dei.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/usuario")
 @Tag(name="Usuario", description = "API para gerenciamento de usuario")
 public class UsuarioController {
 
@@ -25,4 +30,19 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.listarUsuarios());
     }
 
+
+
+    @PostMapping("/criar")
+    @Operation(summary = "Criar novo usuário", description = "Endpoint para criar um novo usuário")
+    public ResponseEntity<UsuarioDTOResponse> criarUsuario(@Valid @RequestBody UsuarioDTORequest usuario) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.criarUsuario(usuario));
+    }
+
+
+    @DeleteMapping("/apagar/{usuarioId}")
+    @Operation(summary = "Deletar usuario por id", description = "Endpoint para deletar um usuario pelo id")
+    public ResponseEntity<Void> apagarUsuario(@PathVariable("usuarioId") Integer usuarioId) {
+        usuarioService.apagarUsuario(usuarioId);
+        return ResponseEntity.noContent().build();
+    }
 }

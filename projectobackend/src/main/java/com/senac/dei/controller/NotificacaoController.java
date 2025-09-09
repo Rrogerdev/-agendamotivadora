@@ -1,19 +1,20 @@
 package com.senac.dei.controller;
 
-import com.senac.dei.entity.Missao;
+import com.senac.dei.dto.request.NotificacaoDTORequest;
+import com.senac.dei.dto.response.NotificacaoDTOResponse;
 import com.senac.dei.entity.Notificacao;
-import com.senac.dei.service.MissaoService;
 import com.senac.dei.service.NotificacaoService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/notificacao")
 @Tag(name="Notificacao", description = "API para gerenciamento de notificacoes")
 public class NotificacaoController {
 
@@ -26,6 +27,20 @@ public class NotificacaoController {
     @GetMapping("/listar")
     public ResponseEntity<List<Notificacao>> listarNotificacoes(){
         return ResponseEntity.ok(notificacaoService.listarNotificacoes());
+    }
+
+
+    @PostMapping("/criar")
+    @Operation(summary = "Criar nova notificação", description = "Endpoint para criar uma nova notificação")
+    public ResponseEntity<NotificacaoDTOResponse> criarParticipante(@Valid @RequestBody NotificacaoDTORequest notificacao) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(notificacaoService.criarNotificacao(notificacao));
+    }
+
+    @DeleteMapping("/apagar/{notificacaoId}")
+    @Operation(summary = "Deletar notificacao por id", description = "Endpoint para deletar uma notificacao pelo id")
+    public ResponseEntity<Void> apagarNotificacao(@PathVariable("notificacaoId") Integer notificacaoId) {
+        notificacaoService.apagarNotificacao(notificacaoId);
+        return ResponseEntity.noContent().build();
     }
 
 }

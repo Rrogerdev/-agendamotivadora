@@ -1,44 +1,33 @@
-package com.senac.dei.entity;
-
+package com.senac.dei.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.senac.dei.entity.Missao;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "tarefa")
-public class Tarefa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="tarefa_id")
+public class TarefaDTORequest {
+
+
+
+
+
+
+
     private int tarefa_id;
 
 
-    @Column(name = "tarefa_titulo")
+    private int missao_id;
+
+
     private String tarefa_titulo;
 
-    @Column(name = "tarefa_detalhe")
+
     private String tarefa_detalhe;
 
 
-//    @Temporal(TemporalType.DATE)
-    @Column(name = "tarefa_prazo")
+
     private LocalDateTime tarefa_prazo;
-
-
-//    @Temporal(TemporalType.DATE)
-    @Column(name = "tarefa_inicio")
-    private LocalDateTime tarefa_inicio;
-
-
-    @Column(name="tarefa_status")
-    private int status;
-
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name="missao_id", nullable = false)
-    private Missao missao;
 
     public int getTarefa_id() {
         return tarefa_id;
@@ -46,6 +35,14 @@ public class Tarefa {
 
     public void setTarefa_id(int tarefa_id) {
         this.tarefa_id = tarefa_id;
+    }
+
+    public int getMissao_id() {
+        return missao_id;
+    }
+
+    public void setMissao_id(int missao_id) {
+        this.missao_id = missao_id;
     }
 
     public String getTarefa_titulo() {
@@ -80,12 +77,12 @@ public class Tarefa {
         this.tarefa_inicio = tarefa_inicio;
     }
 
-    public int getStatus() {
-        return status;
+    public int getTarefa_status() {
+        return tarefa_status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setTarefa_status(int tarefa_status) {
+        this.tarefa_status = tarefa_status;
     }
 
     public Missao getMissao() {
@@ -95,4 +92,13 @@ public class Tarefa {
     public void setMissao(Missao missao) {
         this.missao = missao;
     }
+
+    private LocalDateTime tarefa_inicio;
+
+
+
+    private int tarefa_status;
+
+
+    private Missao missao;
 }
