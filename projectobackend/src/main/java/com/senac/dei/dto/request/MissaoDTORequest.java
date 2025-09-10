@@ -26,7 +26,17 @@ public class MissaoDTORequest {
 
 
 
-    private Set<Tarefa> tarefas;
+    private int tarefa_id;
+
+    private int missao_status;
+
+    public int getMissao_status() {
+        return missao_status;
+    }
+
+    public void setMissao_status(int missao_status) {
+        this.missao_status = missao_status;
+    }
 
     public int getMissao_id() {
         return missao_id;
@@ -52,12 +62,12 @@ public class MissaoDTORequest {
         this.missao_prazo = missao_prazo;
     }
 
-    public Set<Tarefa> getTarefas() {
-        return tarefas;
+    public int getTarefa_id() {
+        return tarefa_id;
     }
 
-    public void setTarefas(Set<Tarefa> tarefas) {
-        this.tarefas = tarefas;
+    public void setTarefa_id(int tarefa_id) {
+        this.tarefa_id = tarefa_id;
     }
 
     public int getMeta_id() {

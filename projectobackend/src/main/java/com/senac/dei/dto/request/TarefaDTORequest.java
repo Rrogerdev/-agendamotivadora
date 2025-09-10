@@ -29,6 +29,8 @@ public class TarefaDTORequest {
 
     private LocalDateTime tarefa_prazo;
 
+    private int tarefa_status;
+
     public int getTarefa_id() {
         return tarefa_id;
     }
@@ -85,20 +87,14 @@ public class TarefaDTORequest {
         this.tarefa_status = tarefa_status;
     }
 
-    public Missao getMissao() {
-        return missao;
-    }
 
-    public void setMissao(Missao missao) {
-        this.missao = missao;
-    }
 
     private LocalDateTime tarefa_inicio;
 
 
 
-    private int tarefa_status;
 
 
-    private Missao missao;
+
+
 }

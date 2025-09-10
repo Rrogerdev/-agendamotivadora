@@ -1,10 +1,5 @@
 package com.senac.dei.dto.response;
 
-import com.senac.dei.entity.Meta;
-import com.senac.dei.entity.Notificacao;
-import com.senac.dei.entity.Tarefa;
-
-import java.util.Set;
 
 public class UsuarioDTOResponse {
 
@@ -25,8 +20,6 @@ public class UsuarioDTOResponse {
 
     private int usuario_status;
 
-//    private Set<Meta> metas;
-//    private Set <Notificacao> notificacoes;
 
 
     public int getUsuario_id() {

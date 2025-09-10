@@ -27,9 +27,15 @@ public class MetaDTORequest {
 
     private LocalDateTime meta_prazo;
 
+    public LocalDateTime getMeta_inicio() {
+        return meta_inicio;
+    }
 
+    public void setMeta_inicio(LocalDateTime meta_inicio) {
+        this.meta_inicio = meta_inicio;
+    }
 
-    private LocalDateTime missao_inicio;
+    private LocalDateTime meta_inicio;
 
     public int getMeta_id() {
         return meta_id;
@@ -63,33 +69,31 @@ public class MetaDTORequest {
         this.meta_prazo = meta_prazo;
     }
 
-    public LocalDateTime getMissao_inicio() {
-        return missao_inicio;
+
+
+
+
+
+
+
+
+    public int getUsuario_id() {
+        return usuario_id;
     }
 
-    public void setMissao_inicio(LocalDateTime missao_inicio) {
-        this.missao_inicio = missao_inicio;
+    public void setUsuario_id(int usuario_id) {
+        this.usuario_id = usuario_id;
     }
 
-    public Set<Missao> getMissoes() {
-        return missoes;
+    private int usuario_id;
+
+    public int getMeta_status() {
+        return meta_status;
     }
 
-    public void setMissoes(Set<Missao> missoes) {
-        this.missoes = missoes;
+    public void setMeta_status(int meta_status) {
+        this.meta_status = meta_status;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    private Set<Missao> missoes;
-
-
-
-    private Usuario usuario;
+    private int meta_status;
 }

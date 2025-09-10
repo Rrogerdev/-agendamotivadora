@@ -85,7 +85,5 @@ public class UsuarioDTORequest {
     public void setUsuario_status(int usuario_status) {
         this.usuario_status = usuario_status;
     }
-//    private Set <Meta> metas;
-//
-//    private Set <Notificacao> notificacoes;
+
 }
