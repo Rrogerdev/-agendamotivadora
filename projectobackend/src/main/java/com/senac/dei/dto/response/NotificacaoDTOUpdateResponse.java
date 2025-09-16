@@ -22,23 +22,12 @@ public class NotificacaoDTOUpdateResponse {
     private String notificacao_detalhe;
 
 
-
-
     private LocalDateTime notificacao_prazo;
 
 
 
     private int notificacao_diaria;
 
-
-
-    private int notificacao_horario;
-
-
-
-    private int notificacao_status;
-
-    private int usuario_id;
 
     public int getNotificacao_id() {
         return notificacao_id;
@@ -80,11 +69,11 @@ public class NotificacaoDTOUpdateResponse {
         this.notificacao_diaria = notificacao_diaria;
     }
 
-    public int getNotificacao_horario() {
+    public LocalDateTime getNotificacao_horario() {
         return notificacao_horario;
     }
 
-    public void setNotificacao_horario(int notificacao_horario) {
+    public void setNotificacao_horario(LocalDateTime notificacao_horario) {
         this.notificacao_horario = notificacao_horario;
     }
 
@@ -96,11 +85,12 @@ public class NotificacaoDTOUpdateResponse {
         this.notificacao_status = notificacao_status;
     }
 
-    public int getUsuario_id() {
-        return usuario_id;
-    }
+    private LocalDateTime notificacao_horario;
 
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
-    }
+
+
+    private int notificacao_status;
+
+
+
 }

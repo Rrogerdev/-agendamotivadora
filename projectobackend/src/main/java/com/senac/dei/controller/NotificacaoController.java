@@ -1,7 +1,9 @@
 package com.senac.dei.controller;
 
 import com.senac.dei.dto.request.NotificacaoDTORequest;
+import com.senac.dei.dto.request.NotificacaoDTOUpdateRequest;
 import com.senac.dei.dto.response.NotificacaoDTOResponse;
+import com.senac.dei.dto.response.NotificacaoDTOUpdateResponse;
 import com.senac.dei.entity.Notificacao;
 import com.senac.dei.service.NotificacaoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -42,6 +44,19 @@ public class NotificacaoController {
         notificacaoService.apagarNotificacao(notificacaoId);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/atualizar/{notificacaoId}")
+    @Operation(summary = "Atualizar notificacao", description = "Endpoint para atualizar uma notificacao")
+    public ResponseEntity<NotificacaoDTOResponse> atualizarNotificacao(@PathVariable("notificacaoId") Integer notificacaoId, @RequestBody NotificacaoDTORequest notificacaoDTO) {
+        return ResponseEntity.ok(notificacaoService.atualizarNotificacao(notificacaoId, notificacaoDTO));
+    }
+    @PostMapping("/atualizarStatus/{notificacaoId}")
+    @Operation(summary = "Atualizar notificacao", description = "Endpoint para atualizar uma notificacao")
+    public ResponseEntity<NotificacaoDTOUpdateResponse> atualizarStatusNotificacao(@PathVariable("notificacaoId") Integer notificacaoId,
+       @RequestBody NotificacaoDTOUpdateRequest notificacaoUpdateDTO) {
+        return ResponseEntity.ok(notificacaoService.atualizarStatus(notificacaoId, notificacaoUpdateDTO));
+    }
+
 
 }
 

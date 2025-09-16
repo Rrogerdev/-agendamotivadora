@@ -51,7 +51,7 @@ public class NotificacaoService {
         return this.notificacaoRepository.findById(notificacaoId).orElse(null);
     }
 
-    public NotificacaoDTOResponse atualizarNotificacao(Integer notificacaoId, NotificacaoDTOUpdateRequest notificacaoDTO) {
+    public NotificacaoDTOResponse atualizarNotificacao(Integer notificacaoId, NotificacaoDTORequest notificacaoDTO) {
         Notificacao notificacao = this.listarPorNotificacaoId(notificacaoId);
         if (notificacao != null) {
             Notificacao notificacaoUpdate = modelMapper.map(notificacaoDTO, Notificacao.class);
@@ -61,8 +61,15 @@ public class NotificacaoService {
         return null;
     }
 
-    public NotificacaoDTOUpdateResponse atualizarStatus(Integer notificacaoId, NotificacaoDTOUpdateRequest notificacaoDTO) {
+    public NotificacaoDTOUpdateResponse atualizarStatus(Integer notificacaoId, NotificacaoDTOUpdateRequest notificacaoUpdateDTO) {
+        Notificacao notificacao = this.listarPorNotificacaoId(notificacaoId);
+        if (notificacao != null) {
+            notificacao.setStatus(notificacaoUpdateDTO.getNotificacao_status());
+            Notificacao tempResponse = notificacaoRepository.save(notificacao);
+            return modelMapper.map(tempResponse, NotificacaoDTOUpdateResponse.class);
+        }
         return null;
     }
 
 }
+
