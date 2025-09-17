@@ -1,7 +1,5 @@
 package com.senac.dei.dto.response;
 
-import com.senac.dei.entity.Tarefa;
-
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -29,6 +27,15 @@ public class MissaoDTOResponse {
 
 
     private LocalDateTime missao_prazo;
+    private LocalDateTime missao_inicio;
+
+    public LocalDateTime getMissao_inicio() {
+        return missao_inicio;
+    }
+
+    public void setMissao_inicio(LocalDateTime missao_inicio) {
+        this.missao_inicio = missao_inicio;
+    }
 
     public int getMissao_status() {
         return missao_status;

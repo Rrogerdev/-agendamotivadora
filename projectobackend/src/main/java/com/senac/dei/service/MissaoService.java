@@ -1,8 +1,9 @@
 package com.senac.dei.service;
 
 import com.senac.dei.dto.request.MissaoDTORequest;
-import com.senac.dei.dto.request.NotificacaoDTORequest;
+import com.senac.dei.dto.request.MissaoDTOUpdateRequest;
 import com.senac.dei.dto.response.MissaoDTOResponse;
+import com.senac.dei.dto.response.MissaoDTOUpdateResponse;
 import com.senac.dei.dto.response.NotificacaoDTOResponse;
 import com.senac.dei.entity.Missao;
 import com.senac.dei.entity.Notificacao;
@@ -43,5 +44,38 @@ public class MissaoService {
 
     public void apagarMissao(Integer missaoId) {
         missaoRepository.apagarLogicoMissao(missaoId);
+    }
+
+    public List<Missao> listarMissoesPorMeta(Integer metaId) {
+        return this.missaoRepository.obterNotificacaoPorMetaId(metaId);
+
+    }
+    public Missao listarPorMissaoId(Integer missaoId) {
+        return this.missaoRepository.findById(missaoId).orElse(null);
+    }
+    public MissaoDTOUpdateResponse atualizarStatus(Integer missaoId, MissaoDTOUpdateRequest missaoUpdateDTO) {
+
+        Missao missao = this.listarPorMissaoId(missaoId);
+        if (missao != null) {
+            missao.setStatus(missaoUpdateDTO.getMissao_status());
+            Missao tempResponse = missaoRepository.save(missao);
+            return modelMapper.map(tempResponse, MissaoDTOUpdateResponse.class);
+        }
+        return null;
+    }
+
+    public MissaoDTOResponse atualizarMissao(Integer missaoId, MissaoDTORequest missaoDTO) {
+        Missao missao = this.listarPorMissaoId(missaoId);
+        if (missao != null) {
+            missao.setMissao_inicio(missaoDTO.getMissao_inicio());
+            missao.setMissao_prazo(missaoDTO.getMissao_prazo());
+            missao.setMissao_titulo(missaoDTO.getMissao_titulo());
+
+
+
+            Missao tempResponse = missaoRepository.save(missao);
+            return modelMapper.map(tempResponse, MissaoDTOResponse.class);
+        }
+        return null;
     }
 }

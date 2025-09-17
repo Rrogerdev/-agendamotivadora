@@ -30,7 +30,7 @@ public class Meta {
 
 //    @Temporal(TemporalType.DATE)
     @Column(name = "meta_inicio")
-    private LocalDateTime missao_inicio;
+    private LocalDateTime meta_inicio;
 
     @Column(name="meta_status")
     private int status;
@@ -76,12 +76,12 @@ public class Meta {
         this.meta_prazo = meta_prazo;
     }
 
-    public LocalDateTime getMissao_inicio() {
-        return missao_inicio;
+    public LocalDateTime getMeta_inicio() {
+        return meta_inicio;
     }
 
-    public void setMissao_inicio(LocalDateTime missao_inicio) {
-        this.missao_inicio = missao_inicio;
+    public void setMeta_inicio(LocalDateTime meta_inicio) {
+        this.meta_inicio = meta_inicio;
     }
 
     public int getStatus() {

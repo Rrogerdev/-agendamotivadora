@@ -1,8 +1,15 @@
 package com.senac.dei.controller;
 
 import com.senac.dei.dto.request.MissaoDTORequest;
+import com.senac.dei.dto.request.MissaoDTOUpdateRequest;
+import com.senac.dei.dto.request.NotificacaoDTORequest;
+import com.senac.dei.dto.request.NotificacaoDTOUpdateRequest;
 import com.senac.dei.dto.response.MissaoDTOResponse;
+import com.senac.dei.dto.response.MissaoDTOUpdateResponse;
+import com.senac.dei.dto.response.NotificacaoDTOResponse;
+import com.senac.dei.dto.response.NotificacaoDTOUpdateResponse;
 import com.senac.dei.entity.Missao;
+import com.senac.dei.entity.Notificacao;
 import com.senac.dei.service.MissaoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -32,7 +39,10 @@ public class MissaoController {
         return ResponseEntity.ok(missaoService.listarMissoes());
     }
 
-
+    @GetMapping("/listarPorMeta/{metaId}")
+    public ResponseEntity<List<Missao>> listarMissoesPorUsuario(@PathVariable("metaId") Integer metaId){
+        return ResponseEntity.ok(missaoService.listarMissoesPorMeta(metaId));
+    }
 
     @PostMapping("/criar")
     @Operation(summary = "Criar nova Missao", description = "Endpoint para criar uma nova Missao")
@@ -47,4 +57,19 @@ public class MissaoController {
         missaoService.apagarMissao(missaoId);
         return ResponseEntity.noContent().build();
     }
+
+
+    @PostMapping("/atualizar/{missaoId}")
+    @Operation(summary = "Atualizar missao", description = "Endpoint para atualizar uma missao")
+    public ResponseEntity<MissaoDTOResponse> atualizarMissao(@PathVariable("missaoId") Integer missaoId, @RequestBody MissaoDTORequest missaoDTO) {
+        return ResponseEntity.ok(missaoService.atualizarMissao(missaoId, missaoDTO));
+    }
+
+    @PostMapping("/atualizarStatus/{missaoId}")
+    @Operation(summary = "Atualizar missao", description = "Endpoint para atualizar uma missão")
+    public ResponseEntity<MissaoDTOUpdateResponse> atualizarStatusMissao(@PathVariable("missaoId") Integer missaoId,
+                                                                         @RequestBody MissaoDTOUpdateRequest missaoUpdateDTO) {
+        return ResponseEntity.ok(missaoService.atualizarStatus(missaoId, missaoUpdateDTO));
+    }
+
 }

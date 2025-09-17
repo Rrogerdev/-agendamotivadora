@@ -2,9 +2,12 @@ package com.senac.dei.service;
 
 
 import com.senac.dei.dto.request.MetaDTORequest;
+import com.senac.dei.dto.request.MetaDTOUpdateRequest;
 import com.senac.dei.dto.request.MissaoDTORequest;
 import com.senac.dei.dto.response.MetaDTOResponse;
+import com.senac.dei.dto.response.MetaDTOUpdateResponse;
 import com.senac.dei.dto.response.MissaoDTOResponse;
+import com.senac.dei.dto.response.MissaoDTOUpdateResponse;
 import com.senac.dei.entity.Meta;
 import com.senac.dei.entity.Missao;
 import com.senac.dei.repository.MetaRepository;
@@ -45,5 +48,38 @@ public class MetaService {
 
     public void apagarMeta(Integer metaId) {
         metaRepository.apagarLogicoMeta(metaId);
+    }
+
+
+
+    public Meta listarPorMetaId(Integer metaId) {
+        return this.metaRepository.findById(metaId).orElse(null);
+    }
+    public MetaDTOUpdateResponse atualizarStatus(Integer metaId, MetaDTOUpdateRequest metaUpdateDTO) {
+
+        Meta meta = this.listarPorMetaId(metaId);
+        if (meta != null) {
+            meta.setStatus(metaUpdateDTO.getMeta_status());
+            Meta tempResponse = metaRepository.save(meta);
+            return modelMapper.map(tempResponse, MetaDTOUpdateResponse.class);
+        }
+        return null;
+    }
+
+    public MetaDTOResponse atualizarMeta(Integer metaId, MetaDTORequest metaDTO) {
+        Meta meta = this.listarPorMetaId(metaId);
+        if (meta!= null) {
+            meta.setMeta_detalhe(metaDTO.getMeta_detalhe());
+            meta.setMeta_inicio(metaDTO.getMeta_inicio());
+            meta.setMeta_titulo(metaDTO.getMeta_titulo());
+            meta.setMeta_prazo(metaDTO.getMeta_prazo());
+
+
+
+            Meta tempResponse = metaRepository.save(meta);
+            return modelMapper.map(tempResponse, MetaDTOResponse.class);
+        }
+        return null;
+
     }
 }

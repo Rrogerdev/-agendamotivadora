@@ -2,9 +2,13 @@ package com.senac.dei.controller;
 
 
 import com.senac.dei.dto.request.MetaDTORequest;
+import com.senac.dei.dto.request.MetaDTOUpdateRequest;
 import com.senac.dei.dto.request.MissaoDTORequest;
+import com.senac.dei.dto.request.MissaoDTOUpdateRequest;
 import com.senac.dei.dto.response.MetaDTOResponse;
+import com.senac.dei.dto.response.MetaDTOUpdateResponse;
 import com.senac.dei.dto.response.MissaoDTOResponse;
+import com.senac.dei.dto.response.MissaoDTOUpdateResponse;
 import com.senac.dei.entity.Meta;
 import com.senac.dei.service.MetaService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,7 +28,7 @@ public class MetaController {
 
     private MetaService metaService;
 
-    public MetaController(MetaService missaoService){
+    public MetaController(MetaService metaService){
         this.metaService = metaService;
     }
     @GetMapping("/listar")
@@ -38,6 +42,19 @@ public class MetaController {
     @Operation(summary = "Criar nova Meta", description = "Endpoint para criar uma nova Meta")
     public ResponseEntity<MetaDTOResponse> criarMeta(@Valid @RequestBody MetaDTORequest meta) {
         return ResponseEntity.status(HttpStatus.CREATED).body(metaService.criarMeta(meta));
+    }
+
+    @PostMapping("/atualizarStatus/{metaId}")
+    @Operation(summary = "Atualizar meta", description = "Endpoint para atualizar uma meta")
+    public ResponseEntity<MetaDTOUpdateResponse> atualizarStatusMeta(@PathVariable("metaId") Integer metaId,
+                                                                     @RequestBody MetaDTOUpdateRequest metaUpdateDTO) {
+        return ResponseEntity.ok(metaService.atualizarStatus(metaId, metaUpdateDTO));
+    }
+
+    @PostMapping("/atualizar/{metaId}")
+    @Operation(summary = "Atualizar meta", description = "Endpoint para atualizar uma meta")
+    public ResponseEntity<MetaDTOResponse> atualizarMeta(@PathVariable("metaId") Integer metaId, @RequestBody MetaDTORequest metaDTO) {
+        return ResponseEntity.ok(metaService.atualizarMeta(metaId, metaDTO));
     }
 
     @DeleteMapping("/apagar/{metaId}")

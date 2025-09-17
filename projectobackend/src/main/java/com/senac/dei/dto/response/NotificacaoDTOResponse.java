@@ -40,7 +40,7 @@ public class NotificacaoDTOResponse {
 
 
 
-    private int notificacao_horario;
+    private LocalDateTime notificacao_horario;
 
 
 
@@ -88,11 +88,11 @@ public class NotificacaoDTOResponse {
         this.notificacao_diaria = notificacao_diaria;
     }
 
-    public int getNotificacao_horario() {
+    public LocalDateTime getNotificacao_horario() {
         return notificacao_horario;
     }
 
-    public void setNotificacao_horario(int notificacao_horario) {
+    public void setNotificacao_horario(LocalDateTime notificacao_horario) {
         this.notificacao_horario = notificacao_horario;
     }
 

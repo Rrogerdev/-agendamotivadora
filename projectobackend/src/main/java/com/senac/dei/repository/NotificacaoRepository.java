@@ -19,6 +19,9 @@ public interface NotificacaoRepository extends JpaRepository<Notificacao, Intege
     @Query("SELECT n FROM Notificacao n WHERE n.id = :id")
     Notificacao obterNotificacaoPorId(@Param("id") int id);
 
+
+    @Query("SELECT n FROM Notificacao n WHERE n.usuario.id = :usuario_id")
+    List<Notificacao> obterNotificacaoPorUsuarioId(@Param("usuario_id") int usuarioId);
     @Modifying
     @Transactional
     @Query("UPDATE Notificacao n SET n.status = -1 WHERE n.id = :id")

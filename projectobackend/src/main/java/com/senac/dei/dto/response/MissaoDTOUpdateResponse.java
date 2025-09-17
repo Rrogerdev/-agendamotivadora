@@ -1,13 +1,17 @@
-package com.senac.dei.dto.request;
+package com.senac.dei.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.senac.dei.entity.Tarefa;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
-public class MissaoDTORequest {
+public class MissaoDTOUpdateResponse {
+
+
+
+    private LocalDateTime missao_inicio;
+
+
+    private int missao_status;
 
 
 
@@ -19,11 +23,6 @@ public class MissaoDTORequest {
 
     private String missao_titulo;
 
-
-
-
-    private LocalDateTime missao_prazo;
-
     public LocalDateTime getMissao_inicio() {
         return missao_inicio;
     }
@@ -31,14 +30,6 @@ public class MissaoDTORequest {
     public void setMissao_inicio(LocalDateTime missao_inicio) {
         this.missao_inicio = missao_inicio;
     }
-
-    private LocalDateTime missao_inicio;
-
-
-
-    private int tarefa_id;
-
-    private int missao_status;
 
     public int getMissao_status() {
         return missao_status;
@@ -72,21 +63,9 @@ public class MissaoDTORequest {
         this.missao_prazo = missao_prazo;
     }
 
-    public int getTarefa_id() {
-        return tarefa_id;
-    }
+    private LocalDateTime missao_prazo;
 
-    public void setTarefa_id(int tarefa_id) {
-        this.tarefa_id = tarefa_id;
-    }
 
-    public int getMeta_id() {
-        return meta_id;
-    }
 
-    public void setMeta_id(int meta_id) {
-        this.meta_id = meta_id;
-    }
 
-    private int meta_id;
 }

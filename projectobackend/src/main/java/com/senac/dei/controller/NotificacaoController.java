@@ -31,6 +31,10 @@ public class NotificacaoController {
         return ResponseEntity.ok(notificacaoService.listarNotificacoes());
     }
 
+    @GetMapping("/listarPorUsuario/{usuarioId}")
+    public ResponseEntity<List<Notificacao>> listarNotificacoesPorUsuario(@PathVariable("usuarioId") Integer usuarioId){
+        return ResponseEntity.ok(notificacaoService.listarNotificacoesPorUsuario(usuarioId));
+    }
 
     @PostMapping("/criar")
     @Operation(summary = "Criar nova notificação", description = "Endpoint para criar uma nova notificação")
