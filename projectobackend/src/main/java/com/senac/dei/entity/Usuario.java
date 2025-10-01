@@ -2,6 +2,7 @@ package com.senac.dei.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 @Entity
 @Table(name = "usuario")
@@ -90,5 +91,19 @@ public class Usuario {
 
     @OneToMany(mappedBy = "notificacao_id")
     private Set <Notificacao> notificacoes;
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name="users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name="role_id"))
+    private List<Role> roles;
 
 }
