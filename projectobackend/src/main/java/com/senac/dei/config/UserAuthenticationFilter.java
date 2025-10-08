@@ -11,11 +11,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -34,8 +36,6 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException, IOException {
-        // Verifica se o endpoint requer autenticação antes de processar a requisição
-        System.out.println(checkIfEndpointIsNotPublic(request) + " "  + request.getRequestURI());
         if (checkIfEndpointIsNotPublic(request)) {
 
             String token = recoveryToken(request); // Recupera o token do cabeçalho Authorization da requisição
@@ -51,8 +51,12 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
                 // Define o objeto de autenticação no contexto de segurança do Spring Security
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } else {
-                    throw new RuntimeException("O token está ausente.");
+//                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Sem token");
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("Token inválido ou expirado.");
+                return;
             }
+
         }
         // Continua o processamento da requisição
         filterChain.doFilter(request, response);
@@ -83,8 +87,5 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
     }
 
 
-//    private boolean checkIfEndpointIsNotPublic(HttpServletRequest request) {
-//        String requestURI = request.getRequestURI();
-//        return !Arrays.asList(SecurityConfiguration.ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED).contains(requestURI);
-//    }
+
 }

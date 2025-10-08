@@ -101,8 +101,8 @@ public class Usuario {
     }
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(name="users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
+    @JoinTable(name="usuario_role",
+            joinColumns = @JoinColumn(name = "usuario_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
     private List<Role> roles;
 

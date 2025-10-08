@@ -48,6 +48,7 @@ public class UsuarioService {
     public UsuarioDTOResponse criarUsuario(UsuarioDTORequest UsuarioDTORequest) {
         System.out.println("Input Email: " + UsuarioDTORequest.getUsuario_email());
         Usuario usuario =modelMapper.map(UsuarioDTORequest,Usuario.class);
+        usuario.setUsuario_senha(securityConfiguration.passwordEncoder().encode(UsuarioDTORequest.getUsuario_senha()));
         Usuario usuarioSave = this.usuarioRepository.save(usuario);
         UsuarioDTOResponse usuarioDTOResponse = modelMapper.map(usuarioSave, UsuarioDTOResponse.class);
         return usuarioDTOResponse;
@@ -68,7 +69,7 @@ public class UsuarioService {
         newUser.setUsuario_senha(securityConfiguration.passwordEncoder().encode(createUserDto.password()));
         // Atribui ao usuário uma permissão específica
         Role role = new Role();
-        role.setName(createUserDto.role());
+        role.setRole_name(createUserDto.role());
         newUser.setRoles(List.of(role));
 
 

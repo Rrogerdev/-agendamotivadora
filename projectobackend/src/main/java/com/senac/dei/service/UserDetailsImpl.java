@@ -29,7 +29,7 @@ public class UserDetailsImpl implements UserDetails {
         */
         return user.getRoles()
                 .stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .map(role -> new SimpleGrantedAuthority(role.getRole_name().name()))
                 .collect(Collectors.toList());
     }
 

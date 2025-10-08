@@ -77,11 +77,7 @@ public class UsuarioController {
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<Void> createUser(@RequestBody CreateUserDto createUserDto) {
-        usuarioService.createUser(createUserDto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+
 
 
 }
