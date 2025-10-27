@@ -1,11 +1,9 @@
 package com.senac.dei.controller;
 import com.senac.dei.dto.LoginUserDto;
 import com.senac.dei.dto.RecoveryJwtTokenDto;
-import com.senac.dei.dto.request.TarefaDTORequest;
 import com.senac.dei.dto.request.UsuarioDTORequest;
-import com.senac.dei.dto.response.TarefaDTOResponse;
+import com.senac.dei.dto.response.UserInfoResponse;
 import com.senac.dei.dto.response.UsuarioDTOResponse;
-import com.senac.dei.dto.CreateUserDto;
 import com.senac.dei.entity.Usuario;
 import com.senac.dei.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -17,7 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+import java.util.Optional;
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/usuario")
 @Tag(name="Usuario", description = "API para gerenciamento de usuario")
@@ -35,6 +34,11 @@ public class UsuarioController {
     }
 
 
+
+    @GetMapping("/info/{usuarioId}")
+    public ResponseEntity<UserInfoResponse> buscarUsuarioPorId(@PathVariable("usuarioId") int id){
+        return ResponseEntity.ok(usuarioService.buscarUsuarioPorId(id));
+    }
 
     @PostMapping("/criar")
     @Operation(summary = "Criar novo usuário", description = "Endpoint para criar um novo usuário")
@@ -54,23 +58,10 @@ public class UsuarioController {
 
 
 
-    @GetMapping("/test")
-    public ResponseEntity<String> getAuthenticationTest() {
-        return new ResponseEntity<>("Autenticado com sucesso", HttpStatus.OK);
-    }
-
-    @GetMapping("/test/customer")
-    public ResponseEntity<String> getCustomerAuthenticationTest() {
-        return new ResponseEntity<>("Cliente autenticado com sucesso", HttpStatus.OK);
-    }
-
-    @GetMapping("/test/administrator")
-    public ResponseEntity<String> getAdminAuthenticationTest() {
-        return new ResponseEntity<>("Administrador autenticado com sucesso", HttpStatus.OK);
-    }
 
 
 
+    @CrossOrigin(origins = "http://localhost:8081")
     @PostMapping("/login")
     public ResponseEntity<RecoveryJwtTokenDto> authenticateUser(@RequestBody LoginUserDto loginUserDto) {
         RecoveryJwtTokenDto token = usuarioService.authenticateUser(loginUserDto);

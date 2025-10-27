@@ -61,8 +61,10 @@ public class SecurityConfiguration {
                         .requestMatchers(ENDPOINTS_CUSTOMER).hasRole("CUSTOMER")
                         .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_REQUIRED).authenticated()
                         .anyRequest().permitAll()
-                )
+
+                ).cors(cors -> {})
                 .addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
 
         return http.build();
     }

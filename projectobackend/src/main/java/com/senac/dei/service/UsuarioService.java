@@ -4,6 +4,7 @@ import com.senac.dei.dto.CreateUserDto;
 import com.senac.dei.dto.LoginUserDto;
 import com.senac.dei.dto.RecoveryJwtTokenDto;
 import com.senac.dei.dto.request.UsuarioDTORequest;
+import com.senac.dei.dto.response.UserInfoResponse;
 import com.senac.dei.dto.response.UsuarioDTOResponse;
 import com.senac.dei.entity.Role;
 import com.senac.dei.entity.Usuario;
@@ -17,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -89,8 +91,12 @@ public class UsuarioService {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
         // Gera um token JWT para o usuário autenticado
-        return new RecoveryJwtTokenDto(jwtTokenService.generateToken(userDetails));
+        return new RecoveryJwtTokenDto(jwtTokenService.generateToken(userDetails), userDetails.getId());
     }
 
 
+    public UserInfoResponse buscarUsuarioPorId(int id) {
+        Optional<Usuario> user = this.usuarioRepository.findById(id);
+        return modelMapper.map(user, UserInfoResponse.class);
+    }
 }
