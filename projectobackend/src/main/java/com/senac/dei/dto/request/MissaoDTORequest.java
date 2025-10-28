@@ -12,9 +12,6 @@ public class MissaoDTORequest {
 
 
 
-    private int missao_id;
-
-
 
 
     private String missao_titulo;
@@ -35,27 +32,6 @@ public class MissaoDTORequest {
     private LocalDateTime missao_inicio;
 
 
-
-    private int tarefa_id;
-
-    private int missao_status;
-
-    public int getMissao_status() {
-        return missao_status;
-    }
-
-    public void setMissao_status(int missao_status) {
-        this.missao_status = missao_status;
-    }
-
-    public int getMissao_id() {
-        return missao_id;
-    }
-
-    public void setMissao_id(int missao_id) {
-        this.missao_id = missao_id;
-    }
-
     public String getMissao_titulo() {
         return missao_titulo;
     }
@@ -70,14 +46,6 @@ public class MissaoDTORequest {
 
     public void setMissao_prazo(LocalDateTime missao_prazo) {
         this.missao_prazo = missao_prazo;
-    }
-
-    public int getTarefa_id() {
-        return tarefa_id;
-    }
-
-    public void setTarefa_id(int tarefa_id) {
-        this.tarefa_id = tarefa_id;
     }
 
     public int getMeta_id() {

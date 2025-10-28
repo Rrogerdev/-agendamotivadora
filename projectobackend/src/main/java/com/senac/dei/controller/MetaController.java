@@ -10,6 +10,7 @@ import com.senac.dei.dto.response.MetaDTOUpdateResponse;
 import com.senac.dei.dto.response.MissaoDTOResponse;
 import com.senac.dei.dto.response.MissaoDTOUpdateResponse;
 import com.senac.dei.entity.Meta;
+import com.senac.dei.entity.Missao;
 import com.senac.dei.service.MetaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -36,7 +37,10 @@ public class MetaController {
         return ResponseEntity.ok(metaService.listarMetas());
     }
 
-
+    @GetMapping("/listarPorUsuario/{usuarioId}")
+    public ResponseEntity<List<Meta>> listarMetasPorUsuario(@PathVariable("usuarioId") Integer usuarioId){
+        return ResponseEntity.ok(metaService.listarMetasPorUsuario(usuarioId));
+    }
 
     @PostMapping("/criar")
     @Operation(summary = "Criar nova Meta", description = "Endpoint para criar uma nova Meta")

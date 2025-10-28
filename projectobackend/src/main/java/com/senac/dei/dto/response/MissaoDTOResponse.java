@@ -25,7 +25,6 @@ public class MissaoDTOResponse {
 
 
 
-
     private LocalDateTime missao_prazo;
     private LocalDateTime missao_inicio;
 

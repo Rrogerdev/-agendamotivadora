@@ -14,8 +14,16 @@ public class TarefaDTORequest {
 
 
 
+
     private int tarefa_id;
 
+    public int getTarefa_id() {
+        return tarefa_id;
+    }
+
+    public void setTarefa_id(int tarefa_id) {
+        this.tarefa_id = tarefa_id;
+    }
 
     private int missao_id;
 
@@ -29,15 +37,7 @@ public class TarefaDTORequest {
 
     private LocalDateTime tarefa_prazo;
 
-    private int tarefa_status;
 
-    public int getTarefa_id() {
-        return tarefa_id;
-    }
-
-    public void setTarefa_id(int tarefa_id) {
-        this.tarefa_id = tarefa_id;
-    }
 
     public int getMissao_id() {
         return missao_id;
@@ -79,13 +79,7 @@ public class TarefaDTORequest {
         this.tarefa_inicio = tarefa_inicio;
     }
 
-    public int getTarefa_status() {
-        return tarefa_status;
-    }
 
-    public void setTarefa_status(int tarefa_status) {
-        this.tarefa_status = tarefa_status;
-    }
 
 
 

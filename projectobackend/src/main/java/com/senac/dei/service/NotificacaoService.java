@@ -35,6 +35,7 @@ public class NotificacaoService {
     public NotificacaoDTOResponse criarNotificacao(NotificacaoDTORequest notificacaoDTORequest) {
 
         Notificacao notificacao =modelMapper.map(notificacaoDTORequest,Notificacao.class);
+        notificacao.setStatus(1);
         Notificacao notificacaoSave = this.notificacaoRepository.save(notificacao);
         NotificacaoDTOResponse notificacaoDTOResponse = modelMapper.map(notificacaoSave, NotificacaoDTOResponse.class);
         return notificacaoDTOResponse;

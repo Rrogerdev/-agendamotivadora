@@ -13,7 +13,7 @@ public class NotificacaoDTORequest {
 
 
 
-    private int notificacao_id;
+
 
 
 
@@ -33,17 +33,11 @@ public class NotificacaoDTORequest {
     private int notificacao_diaria;
 
 
-    private int notificacao_status;
+
 
     private int usuario_id;
 
-    public int getNotificacao_id() {
-        return notificacao_id;
-    }
 
-    public void setNotificacao_id(int notificacao_id) {
-        this.notificacao_id = notificacao_id;
-    }
 
     public String getNotificacao_titulo() {
         return notificacao_titulo;
@@ -77,13 +71,6 @@ public class NotificacaoDTORequest {
         this.notificacao_diaria = notificacao_diaria;
     }
 
-    public int getNotificacao_status() {
-        return notificacao_status;
-    }
-
-    public void setNotificacao_status(int notificacao_status) {
-        this.notificacao_status = notificacao_status;
-    }
 
     public int getUsuario_id() {
         return usuario_id;

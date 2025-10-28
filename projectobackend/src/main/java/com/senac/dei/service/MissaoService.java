@@ -35,9 +35,9 @@ public class MissaoService {
     public MissaoDTOResponse criarMissao(MissaoDTORequest missaoDTORequest) {
 
         Missao missao =modelMapper.map(missaoDTORequest,Missao.class);
+        missao.setStatus(1);
         Missao missaoSave = this.missaoRepository.save(missao);
-        MissaoDTOResponse missaoDTOResponse = modelMapper.map(missaoSave, MissaoDTOResponse.class);
-        return missaoDTOResponse;
+        return modelMapper.map(missaoSave, MissaoDTOResponse.class);
 
     }
 

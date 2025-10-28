@@ -28,6 +28,8 @@ public class MetaDTOResponse {
 
     private int meta_status;
 
+
+
     public LocalDateTime getMeta_inicio() {
         return meta_inicio;
     }

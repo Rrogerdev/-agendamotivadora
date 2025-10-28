@@ -14,7 +14,6 @@ public class MetaDTORequest {
 
 
 
-    private int meta_id;
 
 
 
@@ -37,13 +36,6 @@ public class MetaDTORequest {
 
     private LocalDateTime meta_inicio;
 
-    public int getMeta_id() {
-        return meta_id;
-    }
-
-    public void setMeta_id(int meta_id) {
-        this.meta_id = meta_id;
-    }
 
     public String getMeta_titulo() {
         return meta_titulo;
@@ -87,13 +79,4 @@ public class MetaDTORequest {
 
     private int usuario_id;
 
-    public int getMeta_status() {
-        return meta_status;
-    }
-
-    public void setMeta_status(int meta_status) {
-        this.meta_status = meta_status;
-    }
-
-    private int meta_status;
 }

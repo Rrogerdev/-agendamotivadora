@@ -38,6 +38,7 @@ public class MetaService {
     public MetaDTOResponse criarMeta(MetaDTORequest metaDTORequest) {
 
         Meta meta =modelMapper.map(metaDTORequest, Meta.class);
+        meta.setStatus(1);
         Meta metaSave = this.metaRepository.save(meta);
 
 
@@ -81,5 +82,9 @@ public class MetaService {
         }
         return null;
 
+    }
+
+    public List<Meta> listarMetasPorUsuario(Integer usuarioId) {
+        return this.metaRepository.obterMetasPorUsuario(usuarioId);
     }
 }
