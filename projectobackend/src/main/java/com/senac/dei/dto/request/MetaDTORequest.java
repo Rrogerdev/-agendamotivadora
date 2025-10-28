@@ -13,10 +13,16 @@ public class MetaDTORequest {
 
 
 
+    private int meta_id;
 
 
+    public int getMeta_id() {
+        return meta_id;
+    }
 
-
+    public void setMeta_id(int meta_id) {
+        this.meta_id = meta_id;
+    }
 
     private String meta_titulo;
 

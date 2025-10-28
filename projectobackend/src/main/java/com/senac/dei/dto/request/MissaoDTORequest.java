@@ -11,8 +11,15 @@ public class MissaoDTORequest {
 
 
 
+    private int missao_id;
 
+    public int getMissao_id() {
+        return missao_id;
+    }
 
+    public void setMissao_id(int missao_id) {
+        this.missao_id = missao_id;
+    }
 
     private String missao_titulo;
 

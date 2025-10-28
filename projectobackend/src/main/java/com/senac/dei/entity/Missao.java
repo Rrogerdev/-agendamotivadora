@@ -27,7 +27,7 @@ public class Missao {
     private LocalDateTime missao_prazo;
 
 
-    @OneToMany(mappedBy = "tarefa_id")
+    @OneToMany(mappedBy = "missao")
     private Set<Tarefa> tarefas;
 
     @ManyToOne
