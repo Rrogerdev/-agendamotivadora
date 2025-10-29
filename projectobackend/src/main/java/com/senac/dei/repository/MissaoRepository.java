@@ -22,6 +22,6 @@ public interface MissaoRepository extends JpaRepository<Missao, Integer> {
 
 
 
-    @Query("SELECT m FROM Missao m WHERE m.meta.id = :meta_id")
+    @Query("SELECT m FROM Missao m WHERE m.meta.id = :meta_id AND m.status >= 1")
     List<Missao> obterNotificacaoPorMetaId(@Param("meta_id") Integer metaId);
 }

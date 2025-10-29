@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class MetaService {
@@ -85,6 +87,19 @@ public class MetaService {
     }
 
     public List<Meta> listarMetasPorUsuario(Integer usuarioId) {
-        return this.metaRepository.obterMetasPorUsuario(usuarioId);
+        List<Meta> metas = this.metaRepository.obterMetasPorUsuario(usuarioId);
+
+
+
+        for (Meta meta : metas) {
+
+
+            Set<Missao> missoesFiltradas = meta.getMissoes().stream()
+                    .filter(missao -> missao.getStatus() != -1)
+                    .collect(Collectors.toSet());
+
+            meta.setMissoes(missoesFiltradas);
+        }
+        return metas;
     }
 }

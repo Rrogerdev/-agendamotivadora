@@ -21,7 +21,6 @@ public interface MetaRepository extends JpaRepository<Meta, Integer> {
     @Query("UPDATE Meta m SET m.status = -1 WHERE m.id = :id")
     void apagarLogicoMeta(@Param("id") Integer metaId);
 
-
-    @Query("SELECT m FROM Meta m WHERE m.usuario.id = :usuario_id")
+    @Query("SELECT DISTINCT m FROM Meta m WHERE m.usuario.id = :usuario_id")
     List<Meta> obterMetasPorUsuario(@Param("usuario_id") Integer usuarioId);
 }
