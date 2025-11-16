@@ -18,7 +18,7 @@ public class UsuarioDTORequest {
 
 
 
-    private int usuario_id;
+
 
 
     private String usuario_nome;
@@ -36,14 +36,6 @@ public class UsuarioDTORequest {
 
 
     private int usuario_status;
-
-    public int getUsuario_id() {
-        return usuario_id;
-    }
-
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
-    }
 
     public String getUsuario_nome() {
         return usuario_nome;

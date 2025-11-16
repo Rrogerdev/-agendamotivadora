@@ -5,8 +5,11 @@ import com.senac.dei.dto.request.MissaoDTOUpdateRequest;
 import com.senac.dei.dto.response.MissaoDTOResponse;
 import com.senac.dei.dto.response.MissaoDTOUpdateResponse;
 import com.senac.dei.dto.response.NotificacaoDTOResponse;
+import com.senac.dei.entity.Meta;
 import com.senac.dei.entity.Missao;
 import com.senac.dei.entity.Notificacao;
+import com.senac.dei.entity.Usuario;
+import com.senac.dei.repository.MetaRepository;
 import com.senac.dei.repository.MissaoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +19,12 @@ import java.util.List;
 
 @Service
 public class MissaoService {
-    private MissaoRepository missaoRepository;
+    private final MissaoRepository missaoRepository;
+    private final MetaRepository metaRepository;
 
-    public MissaoService(MissaoRepository missaoRepository){
+    public MissaoService(MissaoRepository missaoRepository, MetaRepository metaRepository){
         this.missaoRepository = missaoRepository;
+        this.metaRepository = metaRepository;
     }
 
     @Autowired
@@ -36,9 +41,12 @@ public class MissaoService {
 
         Missao missao =modelMapper.map(missaoDTORequest,Missao.class);
         missao.setStatus(1);
+        Meta meta = metaRepository.findById(missaoDTORequest.getMeta_id())
+                .orElseThrow(() -> new RuntimeException("Meta não encontrada"));
+        missao.setMeta(meta);
+        missao.setMissao_id(0);
         Missao missaoSave = this.missaoRepository.save(missao);
         return modelMapper.map(missaoSave, MissaoDTOResponse.class);
-
     }
 
 

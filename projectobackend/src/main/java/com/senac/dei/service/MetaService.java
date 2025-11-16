@@ -10,7 +10,9 @@ import com.senac.dei.dto.response.MissaoDTOResponse;
 import com.senac.dei.dto.response.MissaoDTOUpdateResponse;
 import com.senac.dei.entity.Meta;
 import com.senac.dei.entity.Missao;
+import com.senac.dei.entity.Usuario;
 import com.senac.dei.repository.MetaRepository;
+import com.senac.dei.repository.UsuarioRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,10 +23,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class MetaService {
-    private MetaRepository metaRepository;
+    private final MetaRepository metaRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public MetaService(MetaRepository metaRepository){
+    public MetaService(MetaRepository metaRepository, UsuarioRepository usuarioRepository){
         this.metaRepository = metaRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
 
@@ -38,16 +42,18 @@ public class MetaService {
 
 
     public MetaDTOResponse criarMeta(MetaDTORequest metaDTORequest) {
-
-        Meta meta =modelMapper.map(metaDTORequest, Meta.class);
+        Meta meta = modelMapper.map(metaDTORequest, Meta.class);
         meta.setStatus(1);
-        Meta metaSave = this.metaRepository.save(meta);
-
-
-        MetaDTOResponse metaDTOResponse = modelMapper.map(metaSave, MetaDTOResponse.class);
-        return metaDTOResponse;
-
+        Usuario usuario = usuarioRepository.findById(metaDTORequest.getUsuario_id())
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        meta.setUsuario(usuario);
+        meta.setMeta_id(0);
+        Meta metaSave = metaRepository.save(meta);
+        return modelMapper.map(metaSave, MetaDTOResponse.class);
     }
+
+
+
 
     public void apagarMeta(Integer metaId) {
         metaRepository.apagarLogicoMeta(metaId);

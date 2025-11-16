@@ -15,15 +15,6 @@ public class TarefaDTORequest {
 
 
 
-    private int tarefa_id;
-
-    public int getTarefa_id() {
-        return tarefa_id;
-    }
-
-    public void setTarefa_id(int tarefa_id) {
-        this.tarefa_id = tarefa_id;
-    }
 
     private int missao_id;
 

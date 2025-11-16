@@ -5,7 +5,9 @@ import com.senac.dei.dto.request.NotificacaoDTOUpdateRequest;
 import com.senac.dei.dto.response.NotificacaoDTOResponse;
 import com.senac.dei.dto.response.NotificacaoDTOUpdateResponse;
 import com.senac.dei.entity.Notificacao;
+import com.senac.dei.entity.Usuario;
 import com.senac.dei.repository.NotificacaoRepository;
+import com.senac.dei.repository.UsuarioRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +16,15 @@ import java.util.List;
 
 @Service
 public class NotificacaoService {
-    private NotificacaoRepository notificacaoRepository;
+    private final NotificacaoRepository notificacaoRepository;
+    private final UsuarioRepository usuarioRepository;
 
 
     @Autowired
     private ModelMapper modelMapper;
-    public NotificacaoService(NotificacaoRepository notificacaoRepository){
+    public NotificacaoService(NotificacaoRepository notificacaoRepository, UsuarioRepository usuarioRepository){
         this.notificacaoRepository = notificacaoRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
 
@@ -36,9 +40,12 @@ public class NotificacaoService {
 
         Notificacao notificacao =modelMapper.map(notificacaoDTORequest,Notificacao.class);
         notificacao.setStatus(1);
+        Usuario usuario = usuarioRepository.findById(notificacaoDTORequest.getUsuario_id())
+                .orElseThrow(() -> new RuntimeException("Usuario não encontrada"));
+        notificacao.setUsuario(usuario);
+        notificacao.setNotificacao_id(0);
         Notificacao notificacaoSave = this.notificacaoRepository.save(notificacao);
-        NotificacaoDTOResponse notificacaoDTOResponse = modelMapper.map(notificacaoSave, NotificacaoDTOResponse.class);
-        return notificacaoDTOResponse;
+        return modelMapper.map(notificacaoSave, NotificacaoDTOResponse.class);
 
     }
 

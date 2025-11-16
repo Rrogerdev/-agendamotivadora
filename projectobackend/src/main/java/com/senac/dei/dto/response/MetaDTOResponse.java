@@ -26,9 +26,15 @@ public class MetaDTOResponse {
 
     private LocalDateTime meta_inicio;
 
-    private int meta_status;
+    private int status;
 
+    public int getStatus() {
+        return status;
+    }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public LocalDateTime getMeta_inicio() {
         return meta_inicio;
@@ -38,13 +44,7 @@ public class MetaDTOResponse {
         this.meta_inicio = meta_inicio;
     }
 
-    public int getMeta_status() {
-        return meta_status;
-    }
 
-    public void setMeta_status(int meta_status) {
-        this.meta_status = meta_status;
-    }
 
     public int getMeta_id() {
         return meta_id;

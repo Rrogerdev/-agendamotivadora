@@ -23,14 +23,14 @@ public class TarefaDTOResponse {
 
     private LocalDateTime tarefa_prazo;
 
-    private int tarefa_status;
+    private int status;
 
-    public int getTarefa_status() {
-        return tarefa_status;
+    public int getStatus() {
+        return status;
     }
 
-    public void setTarefa_status(int tarefa_status) {
-        this.tarefa_status = tarefa_status;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public int getTarefa_id() {

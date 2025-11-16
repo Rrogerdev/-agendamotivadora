@@ -44,7 +44,7 @@ public class NotificacaoDTOResponse {
 
 
 
-    private int notificacao_status;
+    private int status;
 
     private int usuario_id;
 
@@ -96,12 +96,12 @@ public class NotificacaoDTOResponse {
         this.notificacao_horario = notificacao_horario;
     }
 
-    public int getNotificacao_status() {
-        return notificacao_status;
+    public int getStatus() {
+        return status;
     }
 
-    public void setNotificacao_status(int notificacao_status) {
-        this.notificacao_status = notificacao_status;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public int getUsuario_id() {

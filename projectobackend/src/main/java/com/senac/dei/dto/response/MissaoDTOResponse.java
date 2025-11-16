@@ -36,16 +36,17 @@ public class MissaoDTOResponse {
         this.missao_inicio = missao_inicio;
     }
 
-    public int getMissao_status() {
-        return missao_status;
+
+
+    private int status;
+
+    public int getStatus() {
+        return status;
     }
 
-    public void setMissao_status(int missao_status) {
-        this.missao_status = missao_status;
+    public void setStatus(int status) {
+        this.status = status;
     }
-
-    private int missao_status;
-
 
     public int getMissao_id() {
         return missao_id;

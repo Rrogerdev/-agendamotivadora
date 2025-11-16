@@ -18,7 +18,7 @@ public class UsuarioDTOResponse {
 
     private String usuario_senha;
 
-    private int usuario_status;
+    private int status;
 
 
 
@@ -54,11 +54,11 @@ public class UsuarioDTOResponse {
         this.usuario_senha = usuario_senha;
     }
 
-    public int getUsuario_status() {
-        return usuario_status;
+    public int getStatus() {
+        return status;
     }
 
-    public void setUsuario_status(int usuario_status) {
-        this.usuario_status = usuario_status;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
