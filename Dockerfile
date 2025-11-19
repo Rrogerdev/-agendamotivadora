@@ -4,7 +4,6 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-
 FROM amazoncorretto:17
 WORKDIR /app
 COPY --from=build /app/target/dei-0.0.1-SNAPSHOT.jar DeiApplication.jar
