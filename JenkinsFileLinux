@@ -12,8 +12,10 @@ pipeline {
                 script {
                     // Atualiza o PATH se necessário
                     env.PATH = "/usr/bin:$PATH"
+                    dir ('projectobackend'){
                     // Instalar as dependências Maven antes de compilar o projeto
                     sh 'mvn clean install'  // Instala as dependências do Maven
+                    }
                 }
             }
         }
@@ -23,9 +25,10 @@ pipeline {
                 script {
                     def appName = 'agendamotivadora'
                     def imageTag = "${appName}:${env.BUILD_ID}"
-
+                    dir ('projectobackend'){
                     // Construir a imagem Docker
                     sh "docker build -t ${imageTag} ."
+                    }
                 }
             }
         }
