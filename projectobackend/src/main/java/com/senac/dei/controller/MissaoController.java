@@ -34,23 +34,28 @@ public class MissaoController {
     public MissaoController(MissaoService missaoService){
         this.missaoService = missaoService;
     }
+
+    @CrossOrigin(origins="*")
     @GetMapping("/listar")
     public ResponseEntity<List<Missao>> listarMissoes(){
         return ResponseEntity.ok(missaoService.listarMissoes());
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/listarPorMeta/{metaId}")
     public ResponseEntity<List<Missao>> listarMissoesPorUsuario(@PathVariable("metaId") Integer metaId){
         return ResponseEntity.ok(missaoService.listarMissoesPorMeta(metaId));
     }
 
+
+    @CrossOrigin(origins="*")
     @PostMapping("/criar")
     @Operation(summary = "Criar nova Missao", description = "Endpoint para criar uma nova Missao")
     public ResponseEntity<MissaoDTOResponse> criarMissao(@Valid @RequestBody MissaoDTORequest missao) {
         return ResponseEntity.status(HttpStatus.CREATED).body(missaoService.criarMissao(missao));
     }
 
-
+    @CrossOrigin(origins="*")
     @DeleteMapping("/apagar/{missaoId}")
     @Operation(summary = "Deletar missao por id", description = "Endpoint para deletar uma missao pelo id")
     public ResponseEntity<Void> apagarMissao(@PathVariable("missaoId") Integer missaoId) {
@@ -58,13 +63,13 @@ public class MissaoController {
         return ResponseEntity.noContent().build();
     }
 
-
+    @CrossOrigin(origins="*")
     @PostMapping("/atualizar/{missaoId}")
     @Operation(summary = "Atualizar missao", description = "Endpoint para atualizar uma missao")
     public ResponseEntity<MissaoDTOResponse> atualizarMissao(@PathVariable("missaoId") Integer missaoId, @RequestBody MissaoDTORequest missaoDTO) {
         return ResponseEntity.ok(missaoService.atualizarMissao(missaoId, missaoDTO));
     }
-
+    @CrossOrigin(origins="*")
     @PostMapping("/atualizarStatus/{missaoId}")
     @Operation(summary = "Atualizar missao", description = "Endpoint para atualizar uma missão")
     public ResponseEntity<MissaoDTOUpdateResponse> atualizarStatusMissao(@PathVariable("missaoId") Integer missaoId,

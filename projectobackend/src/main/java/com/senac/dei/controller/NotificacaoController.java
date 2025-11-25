@@ -27,34 +27,40 @@ public class NotificacaoController {
     public NotificacaoController(NotificacaoService notificacaoService){
         this.notificacaoService = notificacaoService;
     }
+
+    @CrossOrigin(origins="*")
     @GetMapping("/listar")
     public ResponseEntity<List<Notificacao>> listarNotificacoes(){
         return ResponseEntity.ok(notificacaoService.listarNotificacoes());
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/listarPorUsuario/{usuarioId}")
     public ResponseEntity<List<Notificacao>> listarNotificacoesPorUsuario(@PathVariable("usuarioId") Integer usuarioId){
         return ResponseEntity.ok(notificacaoService.listarNotificacoesPorUsuario(usuarioId));
     }
 
+
+    @CrossOrigin(origins="*")
     @PostMapping("/criar")
     @Operation(summary = "Criar nova notificação", description = "Endpoint para criar uma nova notificação")
     public ResponseEntity<NotificacaoDTOResponse> criarParticipante(@Valid @RequestBody NotificacaoDTORequest notificacao) {
         return ResponseEntity.status(HttpStatus.CREATED).body(notificacaoService.criarNotificacao(notificacao));
     }
-
+    @CrossOrigin(origins="*")
     @DeleteMapping("/apagar/{notificacaoId}")
     @Operation(summary = "Deletar notificacao por id", description = "Endpoint para deletar uma notificacao pelo id")
     public ResponseEntity<Void> apagarNotificacao(@PathVariable("notificacaoId") Integer notificacaoId) {
         notificacaoService.apagarNotificacao(notificacaoId);
         return ResponseEntity.noContent().build();
     }
-
+    @CrossOrigin(origins="*")
     @PostMapping("/atualizar/{notificacaoId}")
     @Operation(summary = "Atualizar notificacao", description = "Endpoint para atualizar uma notificacao")
     public ResponseEntity<NotificacaoDTOResponse> atualizarNotificacao(@PathVariable("notificacaoId") Integer notificacaoId, @RequestBody NotificacaoDTORequest notificacaoDTO) {
         return ResponseEntity.ok(notificacaoService.atualizarNotificacao(notificacaoId, notificacaoDTO));
     }
+    @CrossOrigin(origins="*")
     @PostMapping("/atualizarStatus/{notificacaoId}")
     @Operation(summary = "Atualizar notificacao", description = "Endpoint para atualizar uma notificacao")
     public ResponseEntity<NotificacaoDTOUpdateResponse> atualizarStatusNotificacao(@PathVariable("notificacaoId") Integer notificacaoId,

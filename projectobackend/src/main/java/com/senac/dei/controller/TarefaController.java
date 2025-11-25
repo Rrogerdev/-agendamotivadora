@@ -26,20 +26,22 @@ public class TarefaController {
     public TarefaController(TarefaService tarefaService){
         this.tarefaService = tarefaService;
     }
+
+    @CrossOrigin(origins="*")
     @GetMapping("/listar")
     public ResponseEntity<List<Tarefa>>listarTarefas(){
         return ResponseEntity.ok(tarefaService.listarTarefas());
     }
 
 
-
+    @CrossOrigin(origins="*")
     @PostMapping("/criar")
     @Operation(summary = "Criar nova Tarefa", description = "Endpoint para criar uma nova Tarefa")
     public ResponseEntity<TarefaDTOResponse> criarTarefa(@Valid @RequestBody TarefaDTORequest tarefa) {
         return ResponseEntity.status(HttpStatus.CREATED).body(tarefaService.criarTarefa(tarefa));
     }
 
-
+    @CrossOrigin(origins="*")
     @DeleteMapping("/apagar/{tarefaId}")
     @Operation(summary = "Deletar tarefa por id", description = "Endpoint para deletar uma tarefa pelo id")
     public ResponseEntity<Void> apagarTarefa(@PathVariable("tarefaId") Integer tarefaId) {
