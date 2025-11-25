@@ -22,7 +22,7 @@ import java.util.List;
 
 
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/missao")
 @Tag(name="Missao", description = "API para gerenciamento de missões")
