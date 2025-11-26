@@ -64,7 +64,6 @@ public class UsuarioController {
 
 
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/login")
     public ResponseEntity<RecoveryJwtTokenDto> authenticateUser(@RequestBody LoginUserDto loginUserDto) {
         RecoveryJwtTokenDto token = usuarioService.authenticateUser(loginUserDto);
