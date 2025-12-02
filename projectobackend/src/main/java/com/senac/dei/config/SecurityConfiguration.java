@@ -22,7 +22,7 @@ public class SecurityConfiguration {
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
             "/usuario/criar",
-            "usuario/login",// Url que usaremos para fazer login
+            "/usuario/login",// Url que usaremos para fazer login
             "/users", // Url que usaremos para criar um usuário
             "/swagger-ui/",
             "/v3/api-docs/",
