@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*")
+
 @RestController
 @RequestMapping("/meta")
 @Tag(name="Meta", description = "API para gerenciamento de metas")
@@ -34,26 +34,26 @@ public class MetaController {
         this.metaService = metaService;
     }
 
-    @CrossOrigin(origins="*")
+
     @GetMapping("/listar")
     public ResponseEntity<List<Meta>> listarMetas(){
         return ResponseEntity.ok(metaService.listarMetas());
     }
 
 
-    @CrossOrigin(origins="*")
+
     @GetMapping("/listarPorUsuario/{usuarioId}")
     public ResponseEntity<List<Meta>> listarMetasPorUsuario(@PathVariable("usuarioId") Integer usuarioId){
         return ResponseEntity.ok(metaService.listarMetasPorUsuario(usuarioId));
     }
-    @CrossOrigin(origins="*")
+
     @GetMapping("/contarPorUsuario/{usuarioId}")
     public int contarMetasPOrUsuario(@PathVariable("usuarioId") Integer usuarioId){
         return metaService.ContarMetasPorUsuario(usuarioId);
     }
 
 
-    @CrossOrigin(origins="*")
+
     @PostMapping("/criar")
     @Operation(summary = "Criar nova Meta", description = "Endpoint para criar uma nova Meta")
     public ResponseEntity<MetaDTOResponse> criarMeta(@Valid @RequestBody MetaDTORequest meta) {
@@ -61,7 +61,7 @@ public class MetaController {
     }
 
 
-    @CrossOrigin(origins="*")
+
     @PostMapping("/atualizarStatus/{metaId}")
     @Operation(summary = "Atualizar meta", description = "Endpoint para atualizar uma meta")
     public ResponseEntity<MetaDTOUpdateResponse> atualizarStatusMeta(@PathVariable("metaId") Integer metaId,
@@ -70,7 +70,7 @@ public class MetaController {
     }
 
 
-    @CrossOrigin(origins="*")
+
     @PostMapping("/atualizar/{metaId}")
     @Operation(summary = "Atualizar meta", description = "Endpoint para atualizar uma meta")
     public ResponseEntity<MetaDTOResponse> atualizarMeta(@PathVariable("metaId") Integer metaId, @RequestBody MetaDTORequest metaDTO) {
@@ -78,7 +78,7 @@ public class MetaController {
     }
 
 
-    @CrossOrigin(origins="*")
+
     @DeleteMapping("/apagar/{metaId}")
     @Operation(summary = "Deletar meta por id", description = "Endpoint para deletar uma meta pelo id")
     public ResponseEntity<Void> apagarMeta(@PathVariable("metaId") Integer metaId) {

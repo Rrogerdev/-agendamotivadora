@@ -33,7 +33,8 @@ public class SecurityConfiguration {
             "/app.apk",
             "/download/**",
             "/download",
-            "/download/app.apk"
+            "/download/app.apk",
+            "/download/app.apk2"
     };
 
     // Endpoints que requerem autenticação para serem acessados
@@ -66,7 +67,8 @@ public class SecurityConfiguration {
                         .requestMatchers(ENDPOINTS_CUSTOMER).hasRole("CUSTOMER")
                         .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_REQUIRED).authenticated()
                         .anyRequest().permitAll()
-                ).addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                ).cors(cors -> {})
+                .addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
 
         return http.build();

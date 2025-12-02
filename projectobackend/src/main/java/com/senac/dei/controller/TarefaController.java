@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "*")
+
 @RestController
 @RequestMapping("/tarefa")
 @Tag(name="Tarefa", description = "API para gerenciamento de tarefas")
@@ -27,21 +27,21 @@ public class TarefaController {
         this.tarefaService = tarefaService;
     }
 
-    @CrossOrigin(origins="*")
+
     @GetMapping("/listar")
     public ResponseEntity<List<Tarefa>>listarTarefas(){
         return ResponseEntity.ok(tarefaService.listarTarefas());
     }
 
 
-    @CrossOrigin(origins="*")
+
     @PostMapping("/criar")
     @Operation(summary = "Criar nova Tarefa", description = "Endpoint para criar uma nova Tarefa")
     public ResponseEntity<TarefaDTOResponse> criarTarefa(@Valid @RequestBody TarefaDTORequest tarefa) {
         return ResponseEntity.status(HttpStatus.CREATED).body(tarefaService.criarTarefa(tarefa));
     }
 
-    @CrossOrigin(origins="*")
+
     @DeleteMapping("/apagar/{tarefaId}")
     @Operation(summary = "Deletar tarefa por id", description = "Endpoint para deletar uma tarefa pelo id")
     public ResponseEntity<Void> apagarTarefa(@PathVariable("tarefaId") Integer tarefaId) {

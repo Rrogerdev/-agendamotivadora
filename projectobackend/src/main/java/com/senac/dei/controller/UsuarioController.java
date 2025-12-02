@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="*")
+
 @RestController
 @RequestMapping("/usuario")
 @Tag(name="Usuario", description = "API para gerenciamento de usuario")
@@ -29,27 +29,27 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @CrossOrigin(origins="*")
+
     @GetMapping("/listar")
     public ResponseEntity<List<Usuario>> listarUsuarios(){
         return ResponseEntity.ok(usuarioService.listarUsuarios());
     }
 
 
-    @CrossOrigin(origins="*")
+
     @GetMapping("/info/{usuarioId}")
     public ResponseEntity<UserInfoResponse> buscarUsuarioPorId(@PathVariable("usuarioId") int id){
         return ResponseEntity.ok(usuarioService.buscarUsuarioPorId(id));
     }
 
-    @CrossOrigin(origins="*")
+
     @PostMapping("/criar")
     @Operation(summary = "Criar novo usuário", description = "Endpoint para criar um novo usuário")
     public ResponseEntity<UsuarioDTOResponse> criarUsuario(@Valid @RequestBody UsuarioDTORequest usuario) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.criarUsuario(usuario));
     }
 
-    @CrossOrigin(origins="*")
+
     @DeleteMapping("/apagar/{usuarioId}")
     @Operation(summary = "Deletar usuario por id", description = "Endpoint para deletar um usuario pelo id")
     public ResponseEntity<Void> apagarUsuario(@PathVariable("usuarioId") Integer usuarioId) {
