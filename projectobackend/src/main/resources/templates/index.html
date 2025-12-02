@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Motivadora | Projeto DEI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #4f46e5; /* Azul Indigo moderno */
+            --secondary-color: #818cf8;
+            --bg-color: #f3f4f6;
+            --text-color: #1f2937;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            opacity: 0.9;
+        }
+
+        /* Botão de Download */
+        .btn-download {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-download i {
+            margin-right: 8px;
+        }
+
+        /* Seção de Features */
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Agenda Motivadora</h1>
+    <p>
+        Revolucione sua rotina com o projeto DEI desenvolvido em React Native.
+    </p>
+    <a href="/download/app.apk" class="btn-download">
+        <i class="fas fa-download"></i> Baixar APK
+    </a>
+</header>
+
+<main class="container">
+    <h2 class="section-title">Por que usar nosso DEI?</h2>
+
+    <div class="grid">
+        <div class="card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Progresso Visual</h3>
+            <p>Acompanhe sua evolução através de gráficos comparativos que incentivam a constância.</p>
+            <span class="badge">Em Desenvolvimento</span>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-bullseye"></i>
+            <h3>Gestão de Missões</h3>
+            <p>Crie e gerencie suas próprias missões diárias com facilidade. Defina seus objetivos e veja suas metas sendo batidas</p>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-bell"></i>
+            <h3>Notificações Customizadas</h3>
+            <p>Nosso aplicativo garante notificações customizadas com mensagens e horários inseridos pelo usuário</p>
+            <span class="badge">Em Desenvolvimento</span>
+        </div>
+
+        <div class="card">
+            <i class="fab fa-react"></i>
+            <h3>Tecnologia React Native</h3>
+            <p>Desenvolvido com React Native para compatibilidade com qualquer dispositivo mobile.</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Projeto DEI - Desenvolvido por mim.</p>
+</footer>
+
+</body>
+</html>

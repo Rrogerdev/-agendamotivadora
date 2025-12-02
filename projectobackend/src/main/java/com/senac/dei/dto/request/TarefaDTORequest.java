@@ -1,0 +1,85 @@
+package com.senac.dei.dto.request;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.senac.dei.entity.Missao;
+import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
+
+public class TarefaDTORequest {
+
+
+
+
+
+
+
+
+
+    private int missao_id;
+
+
+    private String tarefa_titulo;
+
+
+    private String tarefa_detalhe;
+
+
+
+    private LocalDateTime tarefa_prazo;
+
+
+
+    public int getMissao_id() {
+        return missao_id;
+    }
+
+    public void setMissao_id(int missao_id) {
+        this.missao_id = missao_id;
+    }
+
+    public String getTarefa_titulo() {
+        return tarefa_titulo;
+    }
+
+    public void setTarefa_titulo(String tarefa_titulo) {
+        this.tarefa_titulo = tarefa_titulo;
+    }
+
+    public String getTarefa_detalhe() {
+        return tarefa_detalhe;
+    }
+
+    public void setTarefa_detalhe(String tarefa_detalhe) {
+        this.tarefa_detalhe = tarefa_detalhe;
+    }
+
+    public LocalDateTime getTarefa_prazo() {
+        return tarefa_prazo;
+    }
+
+    public void setTarefa_prazo(LocalDateTime tarefa_prazo) {
+        this.tarefa_prazo = tarefa_prazo;
+    }
+
+    public LocalDateTime getTarefa_inicio() {
+        return tarefa_inicio;
+    }
+
+    public void setTarefa_inicio(LocalDateTime tarefa_inicio) {
+        this.tarefa_inicio = tarefa_inicio;
+    }
+
+
+
+
+
+    private LocalDateTime tarefa_inicio;
+
+
+
+
+
+
+
+}

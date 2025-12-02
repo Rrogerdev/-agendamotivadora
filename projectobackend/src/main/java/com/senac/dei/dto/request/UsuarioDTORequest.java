@@ -1,0 +1,81 @@
+package com.senac.dei.dto.request;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.senac.dei.entity.Meta;
+import com.senac.dei.entity.Notificacao;
+import com.senac.dei.entity.Usuario;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
+import java.util.Set;
+
+public class UsuarioDTORequest {
+
+
+
+
+
+
+
+
+
+    private String usuario_nome;
+
+
+    private String usuario_email;
+
+
+
+    private String usuario_senha;
+
+
+    private int status;
+
+
+
+    private int usuario_status;
+
+    public String getUsuario_nome() {
+        return usuario_nome;
+    }
+
+    public void setUsuario_nome(String usuario_nome) {
+        this.usuario_nome = usuario_nome;
+    }
+
+    public String getUsuario_email() {
+        return usuario_email;
+    }
+
+    public void setUsuario_email(String usuario_email) {
+        this.usuario_email = usuario_email;
+    }
+
+    public String getUsuario_senha() {
+        return usuario_senha;
+    }
+
+    public void setUsuario_senha(String usuario_senha) {
+        this.usuario_senha = usuario_senha;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+
+    public int getUsuario_status() {
+        return usuario_status;
+    }
+
+    public void setUsuario_status(int usuario_status) {
+        this.usuario_status = usuario_status;
+    }
+
+}
