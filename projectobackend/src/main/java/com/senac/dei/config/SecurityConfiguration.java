@@ -22,8 +22,8 @@ public class SecurityConfiguration {
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
             "/usuario/criar",
-            "/usuario/login",// Url que usaremos para fazer login
-            "/users", // Url que usaremos para criar um usuário
+            "/usuario/login",
+            "/users",
             "/swagger-ui/",
             "/v3/api-docs/",
             "/v3/api-docs",
@@ -35,7 +35,8 @@ public class SecurityConfiguration {
             "/download",
             "/download/app.apk",
             "/download/app.apk2",
-            "/video"
+            "/video",
+            "/qr"
     };
 
     // Endpoints que requerem autenticação para serem acessados
