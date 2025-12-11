@@ -34,7 +34,8 @@ public class SecurityConfiguration {
             "/download/**",
             "/download",
             "/download/app.apk",
-            "/download/app.apk2"
+            "/download/app.apk2",
+            "/video"
     };
 
     // Endpoints que requerem autenticação para serem acessados
