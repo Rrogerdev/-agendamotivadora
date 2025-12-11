@@ -47,7 +47,7 @@
             font-weight: 700;
         }
 
-        header p {
+        header p.hero-text {
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto 2rem auto;
@@ -66,6 +66,7 @@
             font-size: 1.1rem;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem; /* Espaço para o QR Code */
         }
 
         .btn-download:hover {
@@ -75,6 +76,43 @@
 
         .btn-download i {
             margin-right: 8px;
+        }
+
+        /* Container do QR Code - NOVO */
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .qr-card {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 220px;
+        }
+
+        .qr-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .qr-card span {
+            display: block;
+            margin-top: 10px;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Seção de Features */
@@ -150,13 +188,19 @@
 
 <header>
     <h1>Agenda Motivadora</h1>
-    <p>
+    <p class="hero-text">
         Revolucione sua rotina com o projeto DEI desenvolvido em React Native.
     </p>
-    <a href="/download/app.apk" class="btn-download">
+    <a href="https://drive.google.com/file/d/1vN9WAbRSKGQivmfhYctcb_z8zW6J_iBk/view?usp=drive_link" class="btn-download">
         <i class="fas fa-download"></i> Baixar APK
     </a>
 
+    <div class="qr-container">
+        <div class="qr-card">
+            <img src="/qr.png" alt="QR Code para download">
+            <span>Escaneie para instalar</span>
+        </div>
+    </div>
 
 </header>
 
@@ -181,7 +225,6 @@
             <i class="fas fa-bell"></i>
             <h3>Notificações Customizadas</h3>
             <p>Nosso aplicativo garante notificações customizadas com mensagens e horários inseridos pelo usuário</p>
-            <span class="badge">Em Desenvolvimento</span>
         </div>
 
         <div class="card">

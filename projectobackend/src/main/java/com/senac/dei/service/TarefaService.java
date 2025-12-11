@@ -55,4 +55,8 @@ public class TarefaService {
     public void apagarTarefa(Integer tarefaId) {
         tarefaRepository.apagarLogicoTarefa(tarefaId);
     }
+
+    public void atualizarStatus(Integer tarefaId, Integer tarefaStatus) {
+        tarefaRepository.atualizarStatusTarefa(tarefaId, tarefaStatus);
+    }
 }

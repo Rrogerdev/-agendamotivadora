@@ -3,6 +3,7 @@ package com.senac.dei.controller;
 
 import com.senac.dei.dto.request.NotificacaoDTORequest;
 import com.senac.dei.dto.request.TarefaDTORequest;
+import com.senac.dei.dto.request.TarefaStatusDTORequest;
 import com.senac.dei.dto.response.NotificacaoDTOResponse;
 import com.senac.dei.dto.response.TarefaDTOResponse;
 import com.senac.dei.entity.Tarefa;
@@ -46,6 +47,13 @@ public class TarefaController {
     @Operation(summary = "Deletar tarefa por id", description = "Endpoint para deletar uma tarefa pelo id")
     public ResponseEntity<Void> apagarTarefa(@PathVariable("tarefaId") Integer tarefaId) {
         tarefaService.apagarTarefa(tarefaId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/status/{tarefaId}")
+    @Operation(summary = "Atualizar status de tarefa por id", description = "Endpoint para atualizar uma tarefa pelo id")
+    public ResponseEntity<Void> atualizarStatus(@PathVariable("tarefaId") Integer tarefaId, @Valid @RequestBody TarefaStatusDTORequest tarefa) {
+        tarefaService.atualizarStatus(tarefa.getTarefa_id(), tarefa.getTarefa_status());
         return ResponseEntity.noContent().build();
     }
 }

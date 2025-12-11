@@ -13,7 +13,10 @@ import org.springframework.stereotype.Repository;
 public interface TarefaRepository extends JpaRepository<Tarefa, Integer>{
 
 
-
+    @Modifying
+    @Transactional
+    @Query("UPDATE Tarefa t SET t.status = :status WHERE t.id = :id")
+    void atualizarStatusTarefa(@Param("id") Integer tarefaId, @Param("status") Integer tarefaStatus);
 
     @Modifying
     @Transactional
