@@ -10,7 +10,7 @@
 
     <style>
         :root {
-            --primary-color: #4f46e5; /* Azul Indigo moderno */
+            --primary-color: #4f46e5;
             --secondary-color: #818cf8;
             --bg-color: #f3f4f6;
             --text-color: #1f2937;
@@ -30,7 +30,7 @@
             line-height: 1.6;
         }
 
-        /* Header / Hero Section */
+        /* --- HEADER --- */
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: var(--white);
@@ -54,7 +54,6 @@
             opacity: 0.9;
         }
 
-        /* Botão de Download */
         .btn-download {
             display: inline-block;
             background-color: var(--white);
@@ -66,7 +65,7 @@
             font-size: 1.1rem;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 2rem; /* Espaço para o QR Code */
+            margin-bottom: 2rem;
         }
 
         .btn-download:hover {
@@ -78,7 +77,7 @@
             margin-right: 8px;
         }
 
-        /* Container do QR Code - NOVO */
+        /* --- QR CODE --- */
         .qr-container {
             display: flex;
             justify-content: center;
@@ -110,12 +109,30 @@
             font-size: 0.85rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* --- VIDEO SECTION (NOVO) --- */
+        .video-showcase {
+            text-align: center;
+            margin-bottom: 4rem; /* Espaço antes dos cards */
+            animation: slideUp 1s ease;
         }
 
-        /* Seção de Features */
+        .video-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 1rem; /* Moldura branca */
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+            outline: none;
+        }
+
+        /* --- FEATURES --- */
         .container {
             max-width: 1000px;
             margin: 3rem auto;
@@ -174,13 +191,21 @@
             margin-top: 10px;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 2rem;
             margin-top: 3rem;
             font-size: 0.9rem;
             color: #6b7280;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -197,7 +222,7 @@
 
     <div class="qr-container">
         <div class="qr-card">
-            <img src="/qr.png" alt="QR Code para download">
+            <img src="/qr.png" alt="QR Code para download" onerror="this.style.display='none'">
             <span>Escaneie para instalar</span>
         </div>
     </div>
@@ -205,6 +230,16 @@
 </header>
 
 <main class="container">
+
+    <section class="video-showcase">
+        <h2 class="section-title">Veja como funciona</h2>
+        <div class="video-wrapper">
+            <video controls playsinline width="100%"> <source src="/video.mp4" type="video/mp4">
+                Seu navegador não suporta a reprodução de vídeos.
+            </video>
+        </div>
+    </section>
+
     <h2 class="section-title">Por que usar meu DEI?</h2>
 
     <div class="grid">
