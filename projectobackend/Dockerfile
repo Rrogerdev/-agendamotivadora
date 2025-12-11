@@ -8,7 +8,7 @@ FROM amazoncorretto:21
 WORKDIR /app
 COPY --from=build /app/target/dei-0.0.1-SNAPSHOT.jar DeiApplication.jar
 
-COPY --from=build /app/src/main/resources/static /app/static
+COPY src/main/resources/static /app/resources/static
 
 
 EXPOSE 8419
